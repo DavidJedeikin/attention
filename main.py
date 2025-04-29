@@ -2,6 +2,7 @@ import numpy as np
 
 
 class Node:
+    # Analogous to a token
 
     def __init__(self):
         # Vector of this node
@@ -11,15 +12,15 @@ class Node:
         self._value = np.random.randn(20, 20)
 
     def key(self):
-        # What do i have?
+        # What I have
         return self._key @ self.data
 
     def query(self):
-        # What am I looking for?
+        # What am I looking for
         return self._query @ self.data
 
     def value(self):
-        # What do I publicly that I am looking for?
+        # What I offer if picked
         return self._value @ self.data
 
 
@@ -50,14 +51,13 @@ class Graph:
             # Get the keys of the input nodes
             keys = [i.key() for i in inputs]
 
-            # Calculate the compatibilities using the dot product
+            # ATTENTION STEP: How much ATTENTION should I be paying to this nodes value
             scores = [k.dot(q) for k in keys]
-
             # Softmax the scores [0, 1]
             scores = np.exp(scores)
             scores = scores / np.sum(scores)
 
-            # Get the values with a weighted sum
+            # Get the values and weight them based on the attention
             values = [i.value() for i in inputs]
             update = sum([s * v] for s, v in zip(scores, values))
             updates.append(update)
