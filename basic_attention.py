@@ -7,6 +7,12 @@ class Node:
     def __init__(self):
         # Vector of this node
         self.data = np.random.randn(20)
+
+        # These are projection matrices that create different "views" of the node (token).
+        # They project the node's internal data into the key, query, and value spaces.
+        # In real Transformers, these matrices are learned and shared across all tokens.
+        # Each node uses the same key/query/value matrices to produce its key, query, and value vectors.
+        # They are matrices (20,20) to enable the views that are made up of linear combinations of the data
         self._key = np.random.randn(20, 20)
         self._query = np.random.randn(20, 20)
         self._value = np.random.randn(20, 20)
