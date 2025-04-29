@@ -50,7 +50,7 @@ class Graph:
             # Get the keys of the input nodes
             keys = [i.key() for i in inputs]
 
-            # Calculate the compatibilities
+            # Calculate the compatibilities using the dot product
             scores = [k.dot(q) for k in keys]
 
             # Softmax the scores [0, 1]
