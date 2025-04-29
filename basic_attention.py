@@ -2,7 +2,7 @@ import numpy as np
 
 
 class Node:
-    # Analogous to a token
+    # Each token _is_ a node
 
     def __init__(self):
         # Vector of this node
