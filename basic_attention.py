@@ -6,6 +6,8 @@ class Node:
 
     def __init__(self):
         # Vector of this node
+        # This data would be the embedding of the word
+        # "Cat" -> Some vector of len 512 in reality
         self.data = np.random.randn(20)
 
         # These are projection matrices that create different "views" of the node (token).
@@ -18,15 +20,27 @@ class Node:
         self._value = np.random.randn(20, 20)
 
     def key(self):
-        # What I have
+        # How nodes "see" what I represent
+        # The key is an abstraction of the type of data that is help by the node
+        # It might encode things like: "Animal", "Noun", "Person" etc
+        # It's used to detemine how much "ATTENTION" other nodes need to pay to it
+        # This is achieved using the dot product
+        # For example, A Person may well be Walking so if person was a query and walking was a key,
+        # these two might create strong attention
+        # On the other hand, a Person is unlikely to be associated with Green, so the
+        # dot product of the person query with a green key would be low = low attention
         return self._key @ self.data
 
     def query(self):
-        # What am I looking for
+        # "What am I looking for"
+        # Used to define the kinds of things that might be of interest to this node
+        # For example, a Person node might be interested in:
+        # Other people, activites, food, actions
         return self._query @ self.data
 
     def value(self):
-        # What I offer if picked
+        # What exactly i am if picked. For example, if my key indicates i am a "Fruit"
+        # My value might encode in some way that I am an apple
         return self._value @ self.data
 
 

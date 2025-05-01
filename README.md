@@ -9,6 +9,8 @@ Little playground for learning about Attention & Transformers based on Andrej Ka
 
 # Other Resources
 
+- [Tensor to Tensor Transformer Model - Google Colab](https://colab.research.google.com/github/tensorflow/tensor2tensor/blob/master/tensor2tensor/notebooks/hello_t2t.ipynb)
+
 - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
 - [The Annotated Transformer](https://nlp.seas.harvard.edu/2018/04/03/attention.html)
 - [How Transformer LLM's work](https://www.deeplearning.ai/short-courses/how-transformer-llms-work/?utm_campaign=handsonllm-launch&utm_medium=partner)
